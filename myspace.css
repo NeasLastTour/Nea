@@ -214,6 +214,7 @@ header button#menuToggle svg {
 }
 
 /* --- MUSIIKKISOITIN --- */
+/* --- MUSIIKKISOITIN --- */
 .musicPlayer {
     position: relative;
     border: 1px solid #333;
@@ -234,16 +235,34 @@ header button#menuToggle svg {
     cursor: pointer;
 }
 
+/* Päivitetty mustan tekstilaatikon sijoittelu */
 .musicPlayer .songName {
     position: absolute;
     right: 14px;
-    top: 13px;
+    top: 50%;                    /* Keskittää laatikon pystysuunnassa soittimen sisälle */
+    transform: translateY(-50%); /* Viimeistelee tarkan keskityksen */
     background: #333;
     color: #fff;
     border-radius: 5px;
     display: inline-block;
     width: 80%;
-    margin-top: -5px;
+    padding: 3px 10px;           /* Lisää vähän ilmaa ylä- ja alareunaan */
+}
+
+/* UUDET SÄÄNNÖT: Pakotetaan tekstit omille riveilleen */
+.musicPlayer .songName .title,
+.musicPlayer .songName .artist {
+    display: block;              /* Span-elementit muuttuvat lohkoiksi -> rivinvaihto */
+}
+
+.musicPlayer .songName .title {
+    font-weight: bold;           /* Lihavoidaan kappaleen nimi */
+    font-size: 13px;
+}
+
+.musicPlayer .songName .artist {
+    font-size: 11px;             /* Tehdään artistin nimestä vähän pienempi */
+    color: #FFCE95;              /* Antaa artistille nätin teemavärin */
 }
 
 /* --- OIKEA SARAKE & TOP 8 --- */
