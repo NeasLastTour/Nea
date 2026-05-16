@@ -1,4 +1,6 @@
-/* --- PERUSASETUKSET --- */
+/* ======================================================= */
+/* 1. PERUSASETUKSET & LAYOUT (Tietokone ja yleiset)       */
+/* ======================================================= */
 body {
     width: 100%;
     margin: auto;
@@ -9,6 +11,10 @@ body {
     background-attachment: fixed;
     font-family: sans-serif;
     font-size: 14px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 a {
@@ -288,14 +294,150 @@ header button#menuToggle svg {
     border-radius: 5px;
 }
 
-/* --- MOBIILI-REDAKTIO (Media Queries) --- */
+/* ======================================================= */
+/* 2. DIAESITYS / SLIDESHOW (Normaali tietokonenäkymä)      */
+/* ======================================================= */
+.slideshow-container {
+    max-width: 50%;
+    height: 650px;
+    position: relative;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 2px solid #333;
+    background: #000;
+}
+
+.mySlides {
+    width: 100%;
+    height: 100%;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Nuolet */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 4px;
+    background-color: #717171;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.active, .dot:hover {
+    background-color: #bbb;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@keyframes fade {
+    from { opacity: .4 }
+    to { opacity: 1 }
+}
+
+/* Alapuolen rinnakkainen galleria / Modal */
+.gallery-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.gallery-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* ======================================================= */
+/* 3. MOBIILIVERSIO (TÄMÄN ON OLTAVA AIVAN ALIMMAISENA)      */
+/* ======================================================= */
 @media screen and (max-width: 732px) {
     .main {
         grid-template-columns: 100%;
     }
 
-    .left,
-    .right {
+    .left, .right {
         grid-column: 1/4;
         padding: 10px;
     }
@@ -310,197 +452,27 @@ header button#menuToggle svg {
         overflow: hidden;
     }
 
-    /* === SIVUN SISÄISET KORJAUKSET GALLERIALLE MOBIILIIN === */
+    /* KÄNNYKKÄKORJAUKSET GALLERIALLE */
     .slideshow-container {
-        max-width: 95% !important; /* Otetaan lähes koko ruudun leveys kännykällä */
-        max-height: 400px;         /* Pienennetään maksimikorkeutta */
-        margin: 10px auto;
+        max-width: 95%;
+        height: 350px; /* Tiputetaan korkeutta kännykällä sopivaksi */
+        margin: 15px auto;
     }
 
     .mySlides img {
-        height: auto !important;   /* Kumotaan kiinteä tietokoneen 650px korkeus */
-        max-height: 400px;         /* Estetään kuvan venyminen ruudun ulkopuolelle */
-        object-fit: contain;       /* Pitää kuvasuhteen kauniina */
+        height: 100%;
+        object-fit: contain;
     }
 
-    /* Suuremmat painikkeet kosketusnäytölle */
     .prev, .next {
         padding: 12px;
-        font-size: 24px;
-        background-color: rgba(0, 0, 0, 0.4);
+        font-size: 22px;
+        background-color: rgba(0, 0, 0, 0.4); /* Nuolista helpommin erottuvia */
     }
 
     .dot {
-        height: 18px;
-        width: 18px;
-        margin: 0 5px;
+        height: 16px;
+        width: 16px;
+        margin: 0 6px;
     }
-}
-
-/* --- GALLERIA --- */
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    padding: 20px;
-    border-top: 1px solid #ccc;
-}
-
-.gallery-item {
-    flex: 0 0 auto;
-    width: 250px;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 250px;
-    display: block;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-item img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-* {
-    box-sizing: border-box
-}
-
-/* Slideshow container (Tietokoneversio) */
-.slideshow-container {
-    max-width: 50%;
-    max-height: 650px;
-    position: relative;
-    margin: 5px auto;
-    margin-bottom: -5px;
-    overflow: hidden;
-    border: 2px solid #333;
-    background: #000;
-}
-
-/* Force images to fit the container without distortion (Tietokoneversio) */
-.mySlides img {
-    width: 100%;
-    height: 650px;
-    object-fit: contain;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #717171;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-    background-color: #bbb;
-}
-
-/* Fading animation */
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-    to {
-        opacity: 1
-    }
-}
-
-/* Modal background */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-/* Big image */
-.modal-content {
-    display: block;
-    margin: auto;
-    max-width: 90%;
-    max-height: 85vh;
-    border-radius: 10px;
-}
-
-/* Close button */
-.close {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
 }
