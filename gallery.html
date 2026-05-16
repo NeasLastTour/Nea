@@ -45,7 +45,7 @@
                 <img src="gallery/${i}.jpeg" style="width: 100%;">
             </div>`;
 
-            slideshowInner.insertAdjacentHTML('afterbegin', slideHtml);
+            slideshowInner.insertAdjacentHTML('beforeend', slideHtml);
 
             const dotHtml = `<span class="dot" onclick="currentSlide(${i})"></span>`;
             dotContainer.innerHTML += dotHtml;
