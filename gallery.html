@@ -11,9 +11,10 @@
 
     <!-- Slideshow container -->
     <div class="slideshow-container" id="slideshow-inner">
-        <!-- Images will be generated here by JavaScript -->
-
-        <!-- Next and previous buttons -->
+        <!-- Kuvat generoidaan tänne JavaScriptillä -->
+        
+        <!-- Painikkeet pidetään täällä valmiina, ne jäävät automaattisesti 
+             JS:llä luotujen kuvien jälkeen/päälle -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
@@ -21,7 +22,7 @@
 
     <!-- The dots container -->
     <div style="text-align:center" id="dot-container">
-        <!-- Dots will be generated here by JavaScript -->
+        <!-- Pisteet generoidaan tänne JavaScriptillä -->
     </div>
 
     <script>
@@ -31,37 +32,29 @@
         const dotContainer = document.getElementById('dot-container');
         const totalImages = 32;
 
-        // 1. Clear existing content to avoid duplicates
+        // 1. Tyhjennetään pisteet tuplien välttämiseksi
         dotContainer.innerHTML = '';
 
-        // 2. Loop forward from 1 to 20
+        // 2. Luodaan kuvat ja pisteet
+        // 'afterbegin' asettaa kuvat containerin ALKUUN, jolloin nuolinäppäimet 
+        // (jotka ovat jo HTML:ssä) jäävät luonnostaan containerin loppuun kuvien päälle.
         for (let i = 1; i <= totalImages; i++) {
-            // Create Slide HTML
             const slideHtml = `
-        <div class="mySlides fade">
-            <div class="numbertext">${i} / ${totalImages}</div>
-            <img src="gallery/${i}.jpeg" style="width: 100%;">
-        </div>`;
+            <div class="mySlides fade">
+                <div class="numbertext">${i} / ${totalImages}</div>
+                <img src="gallery/${i}.jpeg" style="width: 100%;">
+            </div>`;
 
-            // 'beforeend' ensures 1 is first, 2 is second, etc.
-            slideshowInner.insertAdjacentHTML('beforeend', slideHtml);
+            slideshowInner.insertAdjacentHTML('afterbegin', slideHtml);
 
-            // Create Dot HTML
             const dotHtml = `<span class="dot" onclick="currentSlide(${i})"></span>`;
             dotContainer.innerHTML += dotHtml;
         }
 
-        // 3. Move the navigation buttons to the END of the container 
-        // so they sit on top of the images
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        slideshowInner.appendChild(prevBtn);
-        slideshowInner.appendChild(nextBtn);
-
-        // 4. Initialize the display
+        // 3. Alustetaan näyttö (Painikkeiden JS-siirto poistettu, koska HTML hoitaa sen nyt)
         showSlides(slideIndex);
 
-        // --- Standard Functions (No changes needed here) ---
+        // --- Standardit funktiot ---
         function plusSlides(n) {
             showSlides(slideIndex += n);
         }
