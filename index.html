@@ -225,31 +225,27 @@
 
 						<div><a href="#">Arttu<br><img src="./images/arttu.jpeg" alt=""></a></div>
 
-						<div><a href="#">Macc<br><img src="./My Profile _ Myspace_files/louie.jpg" alt=""></a></div>
+						<div><a href="#">Siiri<br><img src="./My Profile _ Myspace_files/louie.jpg" alt=""></a></div>
 
-						<div><a href="#">Zeke<br><img src="./My Profile _ Myspace_files/zeke.jpg" alt=""></a></div>
+						<div><a href="#">Kia<br><img src="./My Profile _ Myspace_files/zeke.jpg" alt=""></a></div>
 
-						<div><a href="#">Calypso<br><img src="./My Profile _ Myspace_files/calypso.jpg" alt=""></a>
+						<div><a href="#">Annika<br><img src="./My Profile _ Myspace_files/calypso.jpg" alt=""></a>
 						</div>
 
-						<div><a href="#">Zeke 2<br><img src="./My Profile _ Myspace_files/zeke-chihuahua.jpg"
+						<div><a href="#">Dennis<br><img src="./My Profile _ Myspace_files/zeke-chihuahua.jpg"
 									alt=""></a>
 						</div>
 
-						<div><a href="#">CoolDog420<br><img src="./My Profile _ Myspace_files/cooldog420.jpg"
-									alt=""></a>
+						<div><a href="#">Niko<br><img src="./My Profile _ Myspace_files/cooldog420.jpg" alt=""></a>
 						</div>
 
-						<div><a href="#">CoolDog420<br><img src="./My Profile _ Myspace_files/cooldog420.jpg"
-									alt=""></a>
+						<div><a href="#">Empu<br><img src="./My Profile _ Myspace_files/cooldog420.jpg" alt=""></a>
 						</div>
 
-						<div><a href="#">CoolDog420<br><img src="./My Profile _ Myspace_files/cooldog420.jpg"
-									alt=""></a>
+						<div><a href="#">Sofia<br><img src="./My Profile _ Myspace_files/cooldog420.jpg" alt=""></a>
 						</div>
 
-						<div><a href="#">CoolDog420<br><img src="./My Profile _ Myspace_files/cooldog420.jpg"
-									alt=""></a>
+						<div><a href="#">Ninni<br><img src="./My Profile _ Myspace_files/cooldog420.jpg" alt=""></a>
 						</div>
 
 						<div><a href="#">Jake<br><img src="./images/jake.png" alt=""></a></div>
@@ -270,29 +266,29 @@
 		<div id="imageModal" class="modal">
 			<span class="close">&times;</span>
 			<img class="modal-content" id="modalImg">
-		</div>	
+		</div>
 		<script>
-		const modal = document.getElementById("imageModal");
-		const modalImg = document.getElementById("modalImg");
-		const images = document.querySelectorAll(".gallery-item img");
-		const closeBtn = document.querySelector(".close");
+			const modal = document.getElementById("imageModal");
+			const modalImg = document.getElementById("modalImg");
+			const images = document.querySelectorAll(".gallery-item img");
+			const closeBtn = document.querySelector(".close");
 
-		images.forEach(img => {
-			img.addEventListener("click", () => {
-				modal.style.display = "block";
-				modalImg.src = img.src;
+			images.forEach(img => {
+				img.addEventListener("click", () => {
+					modal.style.display = "block";
+					modalImg.src = img.src;
+				});
 			});
-		});
 
-		closeBtn.addEventListener("click", () => {
-			modal.style.display = "none";
-		});
-
-		modal.addEventListener("click", (e) => {
-			if (e.target !== modalImg) {
+			closeBtn.addEventListener("click", () => {
 				modal.style.display = "none";
-			}
-		});
+			});
+
+			modal.addEventListener("click", (e) => {
+				if (e.target !== modalImg) {
+					modal.style.display = "none";
+				}
+			});
 		</script>
 
 	</div>
